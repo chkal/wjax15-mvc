@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(SourceSansPro-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  src: url(SourceSansPro-Semibold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url(SourceSansPro-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Droid Sans Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url(DroidSansMono.ttf) format('truetype');
+}
+
+.reveal {
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  font-family: inherit;
+  text-transform: none;
+  font-weight: 700;
+}
+
+.reveal pre {
+  font-family: 'Droid Sans Mono', monospace;
+  width: 100%;
+  font-size: 0.8em;
+}
+
+.reveal pre code {
+  font-family: inherit;
+  padding: 1.2em 1.3em;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.reveal section img {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+}
