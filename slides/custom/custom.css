@@ -52,3 +52,13 @@
   border: 0;
   box-shadow: none;
 }
+
+.reveal .reference-right {
+  font-size: 14pt;
+  text-align: right;
+}
+
+.reveal .reference-center {
+  font-size: 14pt;
+  text-align: center;
+}

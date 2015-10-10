@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css" id="theme">
-		<link rel="stylesheet" href="custom/custom.css">
+    <link rel="stylesheet" href="custom/custom.css">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -62,11 +62,198 @@
           <p>
             <a href="http://blog.kaltepoth.de">http://blog.kaltepoth.de</a>
           </p>
+          <aside class="notes">
+            <ul>
+              <li>JSR371 Expert Group</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
-          <h1>Thanks!</h1>
-          <h2>Questions?</h2>
+          <h1>MVC 1.0</h1>
+          <aside class="notes">
+            <ul>
+              <li>Neues in EE8</li>
+              <li>Warum etwas neues?</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Java EE 8 Community Survey</h2>
+          <img src="images/community_survey_no_header.png" alt="img" height="500"/>
+          <!--
+          <img src="images/community_survey_single.png" alt="img" width="900" />
+          -->
+          <div class="reference-center">
+            <a href="https://java.net/downloads/javaee-spec/JavaEE8_Community_Survey_Results.pdf">
+              https://java.net/downloads/javaee-spec/JavaEE8_Community_Survey_Results.pdf
+            </a>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Anfang 2014?</li>
+              <li>4500 Teilnehmer</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Warum etwas Neues?</h1>
+
+          <h1>Es gibt doch JSF!</h1>
+        </section>
+
+        <section>
+          <h1>Component Oriented</h1>
+
+          <h1>vs.</h1>
+
+          <h1>Action Oriented</h1>
+        </section>
+
+        <section>
+          <h1>JavaServer Faces</h1>
+
+          <h1>=</h1>
+
+          <h1>Component Oriented</h1>
+        </section>
+
+        <section>
+          <h1>MVC 1.0</h1>
+
+          <h1>=</h1>
+
+          <h1>Action Oriented</h1>
+        </section>
+
+        <section>
+          <h1>Zeitplan</h1>
+          <ul>
+            <li>Q3 2014 Expert Group formed</li>
+            <li>Q1 2015 Early Draft</li>
+            <li>Q4 2015 Early Draft 2</li>
+            <li>Q1 2016 Public Review</li>
+            <li>Q3 2016 Proposed Final Draft</li>
+            <li>H1 2017 Final Release</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Was ist MVC?</h2>
+          <img src="images/mvc.png" alt="img" height="500"/>
+        </section>
+
+        <section>
+          <h2>TODO: Schaubild JAX-RS, BV, CDI, etc</h2>
+        </section>
+
+        <section>
+          <h1>JAX-RS</h1>
+        </section>
+
+        <section>
+          <h1>JAX-RS Fakten</h1>
+          <ul>
+            <li>"Java API for RESTful Web Services"</li>
+            <li>Erstes Release 2008</li>
+            <li>Seit 1.1 Bestandteil von Java EE 6</li>
+            <li>JSR 2.1 -> JSR 370 -> Java EE 8</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>JAX-RS Beispiel #1</h1>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+@Path("/hello")
+public class SimpleResource {
+
+  @GET
+  public String hellWorld() {
+    return "Hello world";
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>JAX-RS Beispiel #2</h1>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+@Path("/hello")
+public class SimpleResource {
+
+  @GET
+  @Path("/{name}")
+  public String sayHello( @PathParam("name") String name ) {
+    return "Hello " + name;
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Und mit MVC?</h1>
+        </section>
+
+        <section>
+          <h1>MVC Beispiel #1</h1>
+          <pre style="width: 100%; font-size: 0.9em;"><code class="java" data-trim>
+@Controller
+@Path("/simple")
+public class SimpleController {
+
+  @GET
+  public String get() {
+    return "simple.jsp";
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>MVC Beispiel #2</h1>
+          <pre style="width: 100%; font-size: 0.9em;"><code class="java" data-trim>
+@Controller
+@Path("/simple")
+public class SimpleController {
+
+  @GET
+  @View("simple.jsp")
+  public void get() {
+    // empty
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>JSP View</h1>
+          <pre style="width: 100%; font-size: 0.9em;"><code class="html" data-trim>
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;title>MVC Demo&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Hello world&lt;/h1>
+  &lt;/body>
+&lt;/html>
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Und mit MVC?</h1>
+        </section>
+
+        <section>
+          <h1>Danke!</h1>
+
+          <h2>Fragen?</h2>
           <div class="mono" style="margin-top: 10%;">
             <a href="https://github.com/chkal/wjax15-mvc">
               https://github.com/chkal/wjax15-mvc

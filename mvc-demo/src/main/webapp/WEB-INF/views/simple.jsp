@@ -1,11 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html>
-  <head lang="en">
-    <meta charset="UTF-8">
-    <title>MVC Demo</title>
-  </head>
-  <body>
-    <h1>${message}</h1>
-  </body>
-</html>
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;title>MVC Demo&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Hello world&lt;/h1>
+  &lt;/body>
+&lt;/html>
