@@ -343,9 +343,97 @@ public class NamedController {
           </code></pre>
         </section>
 
+
+        <section>
+          <h1>Forms</h1>
+          <h2>aka</h2>
+          <h3>"Verarbeiten von Benutzerdaten"</h3>
+        </section>
+
+        <section>
+          <h2>Einfache Forms (1/2)</h2>
+          <pre style="width: 100%; font-size: 0.75em;"><code class="html" data-trim>
+&lt;form action="${mvc.basePath}/form" method="POST">
+
+  Bitte geben Sie Ihren Namen ein:
+  &lt;input type="text" name="name"/>
+
+  &lt;input type="submit" value="Absenden"/>
+
+&lt;/form>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Einfache Forms (1/2)</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+@Controller
+@Path("/form")
+public class FormController {
+
+  @Inject
+  private Models models;
+
+  @POST
+  public String post( @FormParam("name") String name ) {
+
+    models.put( "message", "Hello " + name );
+    return "form.jsp";
+
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Große Forms (1/2)</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+public class HelloForm {
+
+  @FormParam("name")
+  private String name;
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName( String name ) {
+    this.name = name;
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Große Forms (1/2)</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+@Controller
+@Path("/form")
+public class FormController {
+
+  @Inject
+  private Models models;
+
+  @POST
+  public String post( @BeanParam HelloForm form ) {
+
+    models.put( "message", "Hello " + form.getName() );
+    return "form.jsp";
+
+  }
+
+}
+          </code></pre>
+        </section>
+
+
+
+
+
         <section>
           <h1>Danke!</h1>
-
           <h2>Fragen?</h2>
           <div class="mono" style="margin-top: 10%;">
             <a href="https://github.com/chkal/wjax15-mvc">
