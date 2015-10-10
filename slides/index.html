@@ -164,13 +164,13 @@
         </section>
 
         <section>
-          <h1>JAX-RS Beispiel #1</h1>
+          <h2>JAX-RS Beispiel (1/2)</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 @Path("/hello")
 public class SimpleResource {
 
   @GET
-  public String hellWorld() {
+  public String greet() {
     return "Hello world";
   }
 
@@ -179,14 +179,14 @@ public class SimpleResource {
         </section>
 
         <section>
-          <h1>JAX-RS Beispiel #2</h1>
+          <h2>JAX-RS Beispiel (2/2)</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 @Path("/hello")
 public class SimpleResource {
 
   @GET
   @Path("/{name}")
-  public String sayHello( @PathParam("name") String name ) {
+  public String greet( @PathParam("name") String name ) {
     return "Hello " + name;
   }
 
@@ -195,18 +195,18 @@ public class SimpleResource {
         </section>
 
         <section>
-          <h1>Und mit MVC?</h1>
+          <h1>Und MVC?</h1>
         </section>
 
         <section>
-          <h1>MVC Beispiel #1</h1>
-          <pre style="width: 100%; font-size: 0.9em;"><code class="java" data-trim>
+          <h2>Controller (1/3)</h2>
+          <pre style="width: 100%; font-size: 0.8em;"><code class="java" data-trim>
 @Controller
 @Path("/simple")
 public class SimpleController {
 
   @GET
-  public String get() {
+  public String render() {
     return "simple.jsp";
   }
 
@@ -215,16 +215,16 @@ public class SimpleController {
         </section>
 
         <section>
-          <h1>MVC Beispiel #2</h1>
-          <pre style="width: 100%; font-size: 0.9em;"><code class="java" data-trim>
+          <h2>Controller (2/3)</h2>
+          <pre style="width: 100%; font-size: 0.8em;"><code class="java" data-trim>
 @Controller
 @Path("/simple")
 public class SimpleController {
 
   @GET
   @View("simple.jsp")
-  public void get() {
-    // empty
+  public void render() {
+
   }
 
 }
@@ -232,8 +232,8 @@ public class SimpleController {
         </section>
 
         <section>
-          <h1>JSP View</h1>
-          <pre style="width: 100%; font-size: 0.9em;"><code class="html" data-trim>
+          <h2>Controller (3/3)</h2>
+          <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
 &lt;!DOCTYPE html>
 &lt;html>
   &lt;head>
@@ -247,7 +247,100 @@ public class SimpleController {
         </section>
 
         <section>
-          <h1>Und mit MVC?</h1>
+          <h1>The Model</h1>
+          <h2>aka</h2>
+          <h3>"Wie kommen die Daten in die View"</h3>
+        </section>
+
+        <section>
+          <h2>Die Klasse Models (1/2)</h2>
+          <pre style="width: 100%; font-size: 0.8em;"><code class="java" data-trim>
+@Controller
+@Path("/models")
+public class ModelsController {
+
+  @Inject
+  private Models models;
+
+  @GET
+  public String greet() {
+    models.put( "message", "Hello world!" );
+    return "models.jsp";
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Die Klasse Models (2/2)</h2>
+          <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;title>MVC Demo&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>${message}&lt;/h1>
+  &lt;/body>
+&lt;/html>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>CDI's @Named (1/3)</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+@Named
+@RequestScoped
+public class Greeting {
+
+  private String text;
+
+  public String getText() {
+    return text;
+  }
+
+  public void setText( String text ) {
+    this.text = text;
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>CDI's @Named (2/3)</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+@Controller
+@Path("/named")
+public class NamedController {
+
+  @Inject
+  private Greeting greeting;
+
+  @GET
+  public String greet() {
+    greeting.setText( "Hello world!" );
+    return "named.jsp";
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>CDI's @Named (3/3)</h2>
+          <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;title>MVC Demo&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>${greeting.text}&lt;/h1>
+  &lt;/body>
+&lt;/html>
+          </code></pre>
         </section>
 
         <section>
@@ -284,7 +377,7 @@ public class SimpleController {
         overview: false,
         slideNumber: true,
 
-        transition: 'fade', // none/fade/slide/convex/concave/zoom
+        transition: 'none', // none/fade/slide/convex/concave/zoom
 
         // Optional reveal.js plugins
         dependencies: [

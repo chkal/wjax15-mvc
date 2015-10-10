@@ -9,7 +9,7 @@ public class SimpleResource2 {
 
   @GET
   @Path("/{name}")
-  public String sayHello( @PathParam("name") String name ) {
+  public String greet( @PathParam("name") String name ) {
 
     return "Hello " + name;
 

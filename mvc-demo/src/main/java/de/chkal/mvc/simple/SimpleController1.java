@@ -9,7 +9,7 @@ import javax.ws.rs.Path;
 public class SimpleController1 {
 
   @GET
-  public String get() {
+  public String render() {
     return "simple.jsp";
   }
 

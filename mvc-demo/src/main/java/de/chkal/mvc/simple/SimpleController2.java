@@ -11,8 +11,8 @@ public class SimpleController2 {
 
   @GET
   @View("simple.jsp")
-  public void get() {
-    // empty
+  public void render() {
+
   }
 
 }
