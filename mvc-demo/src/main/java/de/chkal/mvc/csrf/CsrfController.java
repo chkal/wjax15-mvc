@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.mvc.Models;
 import javax.mvc.annotation.Controller;
 import javax.mvc.annotation.CsrfValid;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -22,9 +23,11 @@ public class CsrfController {
 
   @POST
   @CsrfValid
-  public String post() {
+  public String post( @FormParam("name") String name ) {
+
     models.put( "message", "CSRF token validated!" );
     return "csrf.jsp";
+
   }
 
 }

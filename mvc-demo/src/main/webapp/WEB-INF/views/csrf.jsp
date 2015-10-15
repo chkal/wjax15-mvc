@@ -15,6 +15,9 @@
 
       <input type="hidden" name="${mvc.csrf.name}" value="${mvc.csrf.token}"/>
 
+      Bitte geben Sie Ihren Namen ein:
+      <input type="text" name="name"/>
+
       <input type="submit" value="Absenden"/>
 
     </form>
