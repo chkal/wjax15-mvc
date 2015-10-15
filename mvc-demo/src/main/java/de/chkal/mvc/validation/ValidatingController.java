@@ -40,6 +40,7 @@ public class ValidatingController {
     }
 
     // process the form here
+
     messages.add( "Validierung erfolgreich." );
     return "validation.jsp";
 

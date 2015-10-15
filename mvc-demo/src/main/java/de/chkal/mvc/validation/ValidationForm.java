@@ -8,12 +8,11 @@ import javax.ws.rs.FormParam;
 public class ValidationForm {
 
   @FormParam("name")
-  @NotNull(message = "Geben Sie ihren Namen ein")
-  @Size(min = 3, message = "Der Name ist zu kurz")
+  @Size(min = 3, message = "Geben Sie Ihren Namen ein")
   private String name;
 
   @FormParam("age")
-  @NotNull(message = "Geben Sie ihr Alter ein")
+  @NotNull(message = "Geben Sie Ihr Alter ein")
   @Min(value = 18, message = "Sie müssen volljährig sein")
   private Integer age;
 
