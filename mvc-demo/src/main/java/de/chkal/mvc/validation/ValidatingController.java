@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.mvc.Models;
 import javax.mvc.annotation.Controller;
 import javax.mvc.binding.BindingResult;
+import javax.validation.Valid;
 import javax.validation.executable.ExecutableType;
 import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.BeanParam;
@@ -31,7 +32,7 @@ public class ValidatingController {
 
   @POST
   @ValidateOnExecution(type = ExecutableType.NONE)
-  public String post( @BeanParam ValidationForm form ) {
+  public String post( @BeanParam @Valid ValidationForm form ) {
 
     if( bindingResult.isFailed() ) {
       messages.addAll( bindingResult.getAllMessages() );

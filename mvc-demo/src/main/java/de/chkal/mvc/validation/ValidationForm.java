@@ -1,16 +1,19 @@
 package de.chkal.mvc.validation;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
 
 public class ValidationForm {
 
   @FormParam("name")
-  @Size(min = 3, message = "Geben Sie ihren vollen Namen ein")
+  @NotNull(message = "Geben Sie ihren Namen ein")
+  @Size(min = 3, message = "Der Name ist zu kurz")
   private String name;
 
   @FormParam("age")
+  @NotNull(message = "Geben Sie ihr Alter ein")
   @Min(value = 18, message = "Sie müssen volljährig sein")
   private Integer age;
 
