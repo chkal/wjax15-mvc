@@ -50,6 +50,13 @@
       <version>1.2</version>
     </dependency>
 
+    <!-- Also include Thymeleaf -->
+    <dependency>
+      <groupId>org.glassfish.ozark.ext</groupId>
+      <artifactId>ozark-thymeleaf</artifactId>
+      <version>1.0.0-m02</version>
+    </dependency>
+
   </dependencies>
 
   <profiles>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <title>Thymeleaf Demo</title>
+  </head>
+  <body>
+
+    <table>
+      <tr th:each="message: ${messages}">
+        <td th:text="${message}">Some text</td>
+      </tr>
+    </table>
+
+  </body>
+</html>
