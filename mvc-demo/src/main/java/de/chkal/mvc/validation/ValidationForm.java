@@ -13,7 +13,7 @@ public class ValidationForm {
 
   @FormParam("age")
   @NotNull(message = "Geben Sie Ihr Alter ein")
-  @Min(value = 18, message = "Sie müssen volljährig sein")
+  @Min(value = 18, message = "Sie müssen 18 Jahre sein")
   private Integer age;
 
   public String getName() {

@@ -7,9 +7,9 @@
   </head>
   <body>
 
-    <c:if test="${not empty validationMessages.messages}">
+    <c:if test="${not empty messages}">
       <ul>
-        <c:forEach var="message" items="${validationMessages.messages}">
+        <c:forEach var="message" items="${messages}">
           <li>${message}</li>
         </c:forEach>
       </ul>
