@@ -428,9 +428,209 @@ public class FormController {
           </code></pre>
         </section>
 
+        <section>
+          <h1>Validation</h1>
+          <h2>aka</h2>
+          <h3>"..."</h3>
+        </section>
 
+        <section>
+          <h1>JSR 303</h1>
+          <h1>Bean Validation</h1>
+        </section>
 
+        <section>
+          <h2>Validierung (1/2)</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+public class ValidationForm {
 
+  @FormParam("name")
+  @Size(min = 3, message = "Geben Sie Ihren Namen ein")
+  private String name;
+
+  @FormParam("age")
+  @NotNull(message = "Geben Sie Ihr Alter ein")
+  @Min(value = 18, message = "Sie müssen 18 Jahre sein")
+  private Integer age;
+
+  /* ... */
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Validierung (2/2)</h2>
+          <pre style="width: 100%; font-size: 0.65em;"><code class="java" data-trim>
+@POST
+public String post( @BeanParam @Valid ValidationForm form ) {
+
+  if( bindingResult.isFailed() ) {
+    models.put( "messages", bindingResult.getAllMessages() );
+    return "validation.jsp";
+  }
+
+  // process the form here
+
+  models.put( "messages",
+      Arrays.asList( "Validierung erfolgreich." ) );
+  return "validation.jsp";
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Views</h1>
+          <h2>aka</h2>
+          <h3>"Wie definiere ich HTML?"</h3>
+        </section>
+
+        <section>
+          <h1>MVC 1.0</h1>
+          <ul style="font-size: 180%;">
+            <li>JSP</li>
+            <li>Facelets</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Ozark</h1>
+          <table style="font-size: 120%;">
+            <tr>
+              <td>
+                <ul>
+                  <li>Thymeleaf</li>
+                  <li>FreeMarker</li>
+                  <li>Velocity</li>
+                  <li>Handlebars</li>
+                  <li>Mustache</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>StringTemplate</li>
+                  <li>Jade</li>
+                  <li>AsciiDoc</li>
+                  <li>JSR223</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h1><u>Beispiel:</u></h1>
+          <h1>Thymeleaf</h1>
+        </section>
+
+        <section>
+          <h2>Thymeleaf (1/3)</h2>
+          <pre style="width: 100%; font-size: 0.6em;"><code class="java" data-trim>
+@Controller
+@Path("/thymeleaf")
+public class ThymeleafController {
+
+  @Inject
+  private Models models;
+
+  @GET
+  public String render() {
+
+    models.put( "messages", Arrays.asList(
+      "Text #1", "Text #2", "Text #3"
+    ) );
+
+    return "thymeleaf.html";
+
+  }
+
+}
+          </code></pre>
+        </section>
+<!--
+        <section>
+          <h2>Thymeleaf (2/3)</h2>
+          <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
+&lt;!DOCTYPE html>
+&lt;html>
+  ...
+  &lt;body>
+
+    &lt;table>
+      &lt;tr th:each="message: ${messages}">
+        &lt;td th:text="${message}">
+          Some text
+        &lt;/td>
+      &lt;/tr>
+    &lt;/table>
+
+  &lt;/body>
+&lt;/html>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Thymeleaf (3/3)</h2>
+          <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
+&lt;!DOCTYPE html>
+&lt;html>
+  ...
+  &lt;body>
+
+    &lt;table>
+      &lt;tr>
+        &lt;td>Text #1&lt;/td>
+      &lt;/tr>
+      &lt;tr>
+        &lt;td>Text #2&lt;/td>
+      &lt;/tr>
+      &lt;tr>
+        &lt;td>Text #3&lt;/td>
+      &lt;/tr>
+    &lt;/table>
+
+  &lt;/body>
+&lt;/html>
+          </code></pre>
+        </section>
+-->
+        <section>
+          <h2>Thymeleaf (2/2)</h2>
+          <table>
+            <tr>
+              <td>
+                <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trimx>
+
+&lt;table>
+  &lt;tr th:each="msg: ${messages}">
+    &lt;td th:text="${msg}">
+      Some text
+    &lt;/td>
+  &lt;/tr>
+&lt;/table>
+
+                </code></pre>
+              </td>
+              <td>
+                <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
+&lt;table>
+  &lt;tr>
+    &lt;td>Text #1&lt;/td>
+  &lt;/tr>
+  &lt;tr>
+    &lt;td>Text #2&lt;/td>
+  &lt;/tr>
+  &lt;tr>
+    &lt;td>Text #3&lt;/td>
+  &lt;/tr>
+&lt;/table>
+                </code></pre>
+              </td>
+            </tr>
+          </table>
+
+        </section>
 
         <section>
           <h1>Danke!</h1>
