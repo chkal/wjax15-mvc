@@ -11,12 +11,12 @@
       <h1>${message}</h1>
     </c:if>
 
-    <form action="${mvc.basePath}/csrf" method="POST">
+    <form action="${mvc.basePath}/tweet" method="POST">
 
       <input type="hidden" name="${mvc.csrf.name}" value="${mvc.csrf.token}"/>
 
-      Bitte geben Sie Ihren Namen ein:
-      <input type="text" name="name"/>
+      Bitte geben Sie einen Text ein:
+      <input type="text" name="text"/>
 
       <input type="submit" value="Absenden"/>
 

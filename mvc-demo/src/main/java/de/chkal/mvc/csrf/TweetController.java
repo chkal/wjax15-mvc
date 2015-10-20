@@ -10,23 +10,23 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 @Controller
-@Path("/csrf")
-public class CsrfController {
+@Path("/tweet")
+public class TweetController {
 
   @Inject
   private Models models;
 
   @GET
   public String get() {
-    return "csrf.jsp";
+    return "tweet.jsp";
   }
 
   @POST
   @CsrfValid
-  public String post( @FormParam("name") String name ) {
+  public String post( @FormParam("text") String text ) {
 
-    models.put( "message", "CSRF token validated!" );
-    return "csrf.jsp";
+    models.put( "message", "You tweeted: " + text );
+    return "tweet.jsp";
 
   }
 
