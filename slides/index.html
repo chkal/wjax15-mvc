@@ -571,53 +571,7 @@ public class ThymeleafController {
 }
           </code></pre>
         </section>
-<!--
-        <section>
-          <h2>Thymeleaf (2/3)</h2>
-          <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
-&lt;!DOCTYPE html>
-&lt;html>
-  ...
-  &lt;body>
 
-    &lt;table>
-      &lt;tr th:each="message: ${messages}">
-        &lt;td th:text="${message}">
-          Some text
-        &lt;/td>
-      &lt;/tr>
-    &lt;/table>
-
-  &lt;/body>
-&lt;/html>
-          </code></pre>
-        </section>
-
-        <section>
-          <h2>Thymeleaf (3/3)</h2>
-          <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
-&lt;!DOCTYPE html>
-&lt;html>
-  ...
-  &lt;body>
-
-    &lt;table>
-      &lt;tr>
-        &lt;td>Text #1&lt;/td>
-      &lt;/tr>
-      &lt;tr>
-        &lt;td>Text #2&lt;/td>
-      &lt;/tr>
-      &lt;tr>
-        &lt;td>Text #3&lt;/td>
-      &lt;/tr>
-    &lt;/table>
-
-  &lt;/body>
-&lt;/html>
-          </code></pre>
-        </section>
--->
         <section>
           <h2>Thymeleaf (2/2)</h2>
           <table>
@@ -653,6 +607,128 @@ public class ThymeleafController {
             </tr>
           </table>
 
+        </section>
+
+        <section>
+          <h1>Security</h1>
+        </section>
+
+        <section>
+          <h1>CSRF</h1>
+          <h2>Cross Site Request Forgery</h2>
+        </section>
+
+        <section>
+          <h2>CSRF Beispiel</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
+&lt;form action="${mvc.basePath}/tweet" method="POST">
+
+  Bitte geben Sie einen Text ein:
+  &lt;input type="text" name="status"/>
+
+  &lt;input type="submit" value="Absenden"/>
+
+&lt;/form>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>CSRF Beispiel</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
+&lt;form id="form" style="display: none;" method="POST"
+      action="http://www.example.com/myapp/tweet">
+  &lt;input type="hidden" name="status"
+         value="PHP ist die beste Sprache der Welt!"/>
+&lt;/form>
+
+&lt;a href="javascript:void(0)"
+   onclick="document.getElementById('form').submit();">
+  Gratis iPhone
+&lt;/a>
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Page Token Pattern</h1>
+          <ul style="font-size: 140%;">
+            <li class="fragment">Server erstellt geheimes Token</li>
+            <li class="fragment">Token wird in Hidden-Field gerendert</li>
+            <li class="fragment">Prüfung des Token bei Submit</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>MVC 1.0 CSRF Modes</h1>
+
+          <table>
+            <tr class="fragment">
+              <td>
+                <strong>OFF</strong>
+              </td>
+              <td>
+                Kein Prüfung (Default)
+              </td>
+            </tr>
+            <tr class="fragment">
+              <td>
+                <strong>EXPLICIT</strong>
+              </td>
+              <td>
+                Prüfung des Tokens mit @CsrfValid
+              </td>
+            </tr>
+            <tr class="fragment">
+              <td>
+                <strong>IMPLICIT</strong>
+              </td>
+              <td>
+                Prüfung bei jedem POST-Request
+              </td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <h2>CSRF Beispiel</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
+&lt;form action="${mvc.basePath}/tweet" method="POST">
+
+  &lt;input type="hidden" name="${mvc.csrf.name}"
+      value="${mvc.csrf.token}"/>
+
+  Bitte geben Sie einen Text ein:
+  &lt;input type="text" name="status"/>
+
+  &lt;input type="submit" value="Absenden"/>
+
+&lt;/form>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Prüfung mit @CsrfValid</h2>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+@Controller
+@Path("/tweet")
+public class TweetController {
+
+  /* ... */
+
+  @POST
+  @CsrfValid
+  public String post( @FormParam("status") String s ) {
+
+    /* ... */
+
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Empfehlung</h1>
+          <h2 class="fragment">IMPLICIT verwenden!</h2>
         </section>
 
         <section>
