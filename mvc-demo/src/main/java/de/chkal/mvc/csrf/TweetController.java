@@ -22,10 +22,10 @@ public class TweetController {
   }
 
   @POST
-  @CsrfValid
-  public String post( @FormParam("text") String text ) {
+  // @CsrfValid
+  public String post( @FormParam("status") String status ) {
 
-    models.put( "message", "You tweeted: " + text );
+    models.put( "message", "You tweeted: " + status );
     return "tweet.jsp";
 
   }
