@@ -46,10 +46,8 @@
           <h1>MVC 1.0</h1>
           <h2>Das neue Webframework<br/>in Java EE 8</h2>
           <p>
-            <small>
-              Created by <a href="http://blog.kaltepoth.de">Christian Kaltepoth</a> /
-              <a href="http://twitter.com/chkal">@chkal</a>
-            </small>
+            <a href="http://blog.kaltepoth.de">Christian Kaltepoth</a> /
+            <a href="http://twitter.com/chkal">@chkal</a>
           </p>
         </section>
 
@@ -99,45 +97,65 @@
         </section>
 
         <section>
-          <h1>Warum etwas Neues?</h1>
-
-          <h1>Es gibt doch JSF!</h1>
+          <h1>JavaServer Faces</h1>
+          <h1>vs.</h1>
+          <h1>MVC 1.0</h1>
+          <aside class="notes">
+            <ul>
+              <li>Wiederspruch?</li>
+              <li>JSF auch MVC</li>
+              <li>Unterschiedliche Ansätze</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>Component Oriented</h1>
-
           <h1>vs.</h1>
-
           <h1>Action Oriented</h1>
+          <aside class="notes">
+            <ul>
+              <li>Es gibt auch mehr...</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>JavaServer Faces</h1>
-
           <h1>=</h1>
-
           <h1>Component Oriented</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Wicket, GWT, Vaadin, ...
+              * M=CDI, V=Facelets, C=JSF
+              * Idee:
+                * Wiederverw. Komponenten
+                * JSF -> Details (Req/Resp)
+              * Pro/Con
+                * (+) Rapid Development
+                * (+) Versteckt tech Details
+                * (-) Weniger Kontrolle
+                * (-) Integration problematisch
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>MVC 1.0</h1>
-
           <h1>=</h1>
-
           <h1>Action Oriented</h1>
-        </section>
-
-        <section>
-          <h1>Zeitplan</h1>
-          <ul>
-            <li>Q3 2014 Expert Group formed</li>
-            <li>Q1 2015 Early Draft</li>
-            <li>Q4 2015 Early Draft 2</li>
-            <li>Q1 2016 Public Review</li>
-            <li>Q3 2016 Proposed Final Draft</li>
-            <li>H1 2017 Final Release</li>
-          </ul>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Struts, Spring MVC, Grails, Spark, Rails/Express...
+              * Idee:
+                * Request/Response im Fokus
+              * Pro/Con
+                * Volle Kontrolle
+                  * (HTTP / HTML/CSS)
+                * Weniger Komfort
+                  * Beispiel JSF Resources
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -167,7 +185,7 @@
           <h2>JAX-RS Beispiel (1/2)</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 @Path("/hello")
-public class SimpleResource {
+public class HelloResource {
 
   @GET
   public String greet() {
@@ -182,7 +200,7 @@ public class SimpleResource {
           <h2>JAX-RS Beispiel (2/2)</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 @Path("/hello")
-public class SimpleResource {
+public class HelloResource {
 
   @GET
   @Path("/{name}")
@@ -202,12 +220,12 @@ public class SimpleResource {
           <h2>Controller (1/3)</h2>
           <pre style="width: 100%; font-size: 0.8em;"><code class="java" data-trim>
 @Controller
-@Path("/simple")
-public class SimpleController {
+@Path("/hello")
+public class HelloController {
 
   @GET
   public String render() {
-    return "simple.jsp";
+    return "helloworld.jsp";
   }
 
 }
@@ -218,13 +236,13 @@ public class SimpleController {
           <h2>Controller (2/3)</h2>
           <pre style="width: 100%; font-size: 0.8em;"><code class="java" data-trim>
 @Controller
-@Path("/simple")
-public class SimpleController {
+@Path("/hello")
+public class HelloController {
 
   @GET
-  @View("simple.jsp")
+  @View("helloworld.jsp")
   public void render() {
-
+    // ...
   }
 
 }
@@ -233,6 +251,7 @@ public class SimpleController {
 
         <section>
           <h2>Controller (3/3)</h2>
+          <h4 style="color: gray;"><tt>/WEB-INF/views/helloworld.jsp</tt></h4>
           <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
 &lt;!DOCTYPE html>
 &lt;html>
@@ -256,8 +275,8 @@ public class SimpleController {
           <h2>Die Klasse Models (1/2)</h2>
           <pre style="width: 100%; font-size: 0.8em;"><code class="java" data-trim>
 @Controller
-@Path("/models")
-public class ModelsController {
+@Path("/hello")
+public class HelloController {
 
   @Inject
   private Models models;
@@ -265,7 +284,7 @@ public class ModelsController {
   @GET
   public String greet() {
     models.put( "message", "Hello world!" );
-    return "models.jsp";
+    return "helloworld.jsp";
   }
 
 }
@@ -274,6 +293,7 @@ public class ModelsController {
 
         <section>
           <h2>Die Klasse Models (2/2)</h2>
+          <h4 style="color: gray;"><tt>/WEB-INF/views/helloworld.jsp</tt></h4>
           <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
 &lt;!DOCTYPE html>
 &lt;html>
@@ -312,8 +332,8 @@ public class Greeting {
           <h2>CDI's @Named (2/3)</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 @Controller
-@Path("/named")
-public class NamedController {
+@Path("/hello")
+public class HelloController {
 
   @Inject
   private Greeting greeting;
@@ -321,7 +341,7 @@ public class NamedController {
   @GET
   public String greet() {
     greeting.setText( "Hello world!" );
-    return "named.jsp";
+    return "helloworld.jsp";
   }
 
 }
@@ -330,6 +350,7 @@ public class NamedController {
 
         <section>
           <h2>CDI's @Named (3/3)</h2>
+          <h4 style="color: gray;"><tt>/WEB-INF/views/helloworld.jsp</tt></h4>
           <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
 &lt;!DOCTYPE html>
 &lt;html>
@@ -732,7 +753,7 @@ public class TweetController {
         </section>
 
         <section>
-          <h1>Und mehr...</h1>
+          <h1>MVC kann mehr...</h1>
           <ul style="font-size: 140%;">
             <li class="fragment">Einfache Redirects aus Controller</li>
             <li class="fragment">CDI Scope: @RedirectScoped</li>
@@ -744,11 +765,30 @@ public class TweetController {
         </section>
 
         <section>
+          <h1>Beispiel Anwendung</h1>
+          <a href="https://github.com/chkal/todo-mvc/" style="font-size: 160%;">
+            https://github.com/chkal/todo-mvc/
+          </a>
+        </section>
+
+        <section>
           <h1>MVC 1.0 TODO</h1>
           <ul style="font-size: 140%;">
             <li class="fragment">Internationalisierung / Lokalisierung</li>
             <li class="fragment">Typsicheres Erstellen von URLs</li>
             <li class="fragment">...</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Zeitplan</h1>
+          <ul>
+            <li class="fragment highlight-green">Q3 2014 Expert Group formed</li>
+            <li class="fragment highlight-green">Q1 2015 Early Draft</li>
+            <li class="fragment highlight-green">Q4 2015 Early Draft 2</li>
+            <li class="fragment highlight-blue">Q1 2016 Public Review</li>
+            <li class="fragment highlight-blue">Q3 2016 Proposed Final Draft</li>
+            <li class="fragment highlight-blue">H1 2017 Final Release</li>
           </ul>
         </section>
 
