@@ -5,8 +5,6 @@ import javax.mvc.Models;
 import javax.mvc.annotation.Controller;
 import javax.mvc.binding.BindingResult;
 import javax.validation.Valid;
-import javax.validation.executable.ExecutableType;
-import javax.validation.executable.ValidateOnExecution;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -29,7 +27,6 @@ public class ValidatingController {
   }
 
   @POST
-  @ValidateOnExecution(type = ExecutableType.NONE)
   public String post( @BeanParam @Valid ValidationForm form ) {
 
     if( bindingResult.isFailed() ) {
