@@ -68,7 +68,8 @@
         </section>
 
         <section>
-          <h1>MVC 1.0</h1>
+          <h1>Warum</h1>
+          <h1>MVC 1.0?</h1>
           <aside class="notes">
             <ul>
               <li>Neues in EE8</li>
@@ -159,8 +160,33 @@
         </section>
 
         <section>
-          <h2>Was ist MVC?</h2>
-          <img src="images/mvc.png" alt="img" height="500"/>
+          <h1>Das MVC</h1>
+          <h1>Entwurfsmuster</h1>
+        </section>
+
+        <section>
+          <img src="images/mvc1.png" alt="img" height="600"/>
+        </section>
+        <section>
+          <img src="images/mvc2.png" alt="img" height="600"/>
+        </section>
+        <section>
+          <img src="images/mvc3.png" alt="img" height="600"/>
+        </section>
+        <section>
+          <img src="images/mvc4.png" alt="img" height="600"/>
+        </section>
+        <section>
+          <img src="images/mvc5.png" alt="img" height="600"/>
+        </section>
+        <section>
+          <img src="images/mvc.png" alt="img" height="600"/>
+        </section>
+
+        <section>
+          <h1>MVC 1.0</h1>
+          <h1 class="fragment" style="color: red; font-size: 300%;">&#9829;</h1>
+          <h1>Java EE 8</h1>
         </section>
 
         <section>
@@ -170,15 +196,16 @@
 
         <section>
           <h1>JAX-RS</h1>
+          <h2 class="fragment">(in &lt; 3 Minuten)</h2>
         </section>
 
         <section>
           <h1>JAX-RS Fakten</h1>
           <ul>
-            <li>"Java API for RESTful Web Services"</li>
-            <li>Erstes Release 2008</li>
-            <li>Seit 1.1 Bestandteil von Java EE 6</li>
-            <li>JSR 2.1 -> JSR 370 -> Java EE 8</li>
+            <li class="fragment">"Java API for RESTful Web Services"</li>
+            <li class="fragment">Erstes Release 2008</li>
+            <li class="fragment">Seit 1.1 Bestandteil von Java EE 6</li>
+            <li class="fragment">JSR 2.1 -> JSR 370 -> Java EE 8</li>
           </ul>
         </section>
 
@@ -214,7 +241,9 @@ public class HelloResource {
         </section>
 
         <section>
-          <h1>Und MVC?</h1>
+          <h1>Hello World</h1>
+          <h2>mit</h2>
+          <h1>MVC 1.0</h1>
         </section>
 
         <section>
@@ -251,7 +280,7 @@ public class HelloController {
         </section>
 
         <section>
-          <h2>Controller</h2>
+          <h2>View</h2>
           <h4 style="color: gray;"><tt>/WEB-INF/views/helloworld.jsp</tt></h4>
           <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
 &lt;!DOCTYPE html>
@@ -267,13 +296,11 @@ public class HelloController {
         </section>
 
         <section>
-          <h1>The Model</h1>
-          <h2>aka</h2>
-          <h3>"Wie kommen die Daten in die View"</h3>
+          <h1>Das Model</h1>
         </section>
 
         <section>
-          <h2>Die Klasse Models</h2>
+          <h2>javax.mvc.Models</h2>
           <pre style="width: 100%; font-size: 0.8em;"><code class="java" data-trim>
 @Controller
 @Path("/hello")
@@ -293,7 +320,7 @@ public class HelloController {
         </section>
 
         <section>
-          <h2>Die Klasse Models</h2>
+          <h2>javax.mvc.Models</h2>
           <h4 style="color: gray;"><tt>/WEB-INF/views/helloworld.jsp</tt></h4>
           <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
 &lt;!DOCTYPE html>
@@ -309,7 +336,7 @@ public class HelloController {
         </section>
 
         <section>
-          <h2>CDI's @Named</h2>
+          <h2>CDI Models</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 @Named
 @RequestScoped
@@ -330,7 +357,7 @@ public class Greeting {
         </section>
 
         <section>
-          <h2>CDI's @Named</h2>
+          <h2>CDI Models</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 @Controller
 @Path("/hello")
@@ -350,7 +377,7 @@ public class HelloController {
         </section>
 
         <section>
-          <h2>CDI's @Named</h2>
+          <h2>CDI Models</h2>
           <h4 style="color: gray;"><tt>/WEB-INF/views/helloworld.jsp</tt></h4>
           <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
 &lt;!DOCTYPE html>
@@ -365,11 +392,8 @@ public class HelloController {
           </code></pre>
         </section>
 
-
         <section>
-          <h1>Forms</h1>
-          <h2>aka</h2>
-          <h3>"Verarbeiten von Benutzerdaten"</h3>
+          <h1>Formulare</h1>
         </section>
 
         <section>
@@ -410,7 +434,7 @@ public class FormController {
         </section>
 
         <section>
-          <h2>Große Forms</h2>
+          <h2>Komplexe Forms</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 public class HelloForm {
 
@@ -430,7 +454,7 @@ public class HelloForm {
         </section>
 
         <section>
-          <h2>Große Forms</h2>
+          <h2>Komplexe Forms</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 @Controller
 @Path("/form")
@@ -453,8 +477,6 @@ public class FormController {
 
         <section>
           <h1>Validation</h1>
-          <h2>aka</h2>
-          <h3>"..."</h3>
         </section>
 
         <section>
@@ -528,8 +550,6 @@ public String post( @BeanParam @Valid HelloForm form ) {
 
         <section>
           <h1>Views</h1>
-          <h2>aka</h2>
-          <h3>"Wie definiere ich HTML?"</h3>
         </section>
 
         <section>
@@ -541,7 +561,7 @@ public String post( @BeanParam @Valid HelloForm form ) {
         </section>
 
         <section>
-          <h1>Ozark</h1>
+          <h1>RI Addons</h1>
           <table style="font-size: 120%;">
             <tr>
               <td>
@@ -597,6 +617,7 @@ public class ThymeleafController {
 
         <section>
           <h2>Thymeleaf</h2>
+          <h4 style="color: gray;"><tt>/WEB-INF/views/thymeleaf.html</tt></h4>
           <table>
             <tr>
               <td>
@@ -647,7 +668,7 @@ public class ThymeleafController {
         <section>
           <h2>CSRF Beispiel</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
-&lt;form action="${mvc.basePath}/tweet" method="POST">
+&lt;form action="/myapp/tweet" method="POST">
 
   Bitte geben Sie einen Text ein:
   &lt;input type="text" name="status"/>
