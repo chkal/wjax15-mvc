@@ -528,18 +528,40 @@ public class HelloForm {
         <section>
           <h2>Validierung</h2>
           <pre style="width: 100%; font-size: 0.65em;"><code class="java" data-trim>
+@Controller
+@Path("/form")
+public class FormController {
+
+  @Inject
+  private Models models;
+
+  @Inject
+  private BindingResult bindingResult;
+
+  @POST
+  public String post( @BeanParam @Valid ValidationForm form ) {
+    // ... gleich mehr ...
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Validierung</h2>
+          <pre style="width: 100%; font-size: 0.65em;"><code class="java" data-trim>
 @POST
-public String post( @BeanParam @Valid HelloForm form ) {
+public String post( @BeanParam @Valid ValidationForm form ) {
 
   if( bindingResult.isFailed() ) {
     models.put( "messages", bindingResult.getAllMessages() );
-    return "validation.jsp";
+    return "form.jsp";
   }
 
-  // process the form here
+  // Verarbeitung des Forms...
 
   models.put( "messages",
-      Arrays.asList( "Validierung erfolgreich." ) );
+    Arrays.asList( "Validierung erfolgreich." ) );
   return "form.jsp";
 
 }
