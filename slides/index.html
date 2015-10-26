@@ -80,8 +80,9 @@
               * Aber warum?
               * Java EE hat doch JSF
               * -
-              * Anfang 2014 -> Community Survey
-              * 4.500 Teilnehmer
+              * Anfang 2014:
+                * Java EE 8 Community Survey
+                * 4.500 Teilnehmer
               * "MVC Webframework?"
             </script>
           </aside>
@@ -129,10 +130,12 @@
           <h1>Component Oriented</h1>
           <h1>vs.</h1>
           <h1>Action Oriented</h1>
-          <aside class="notes">
-            <ul>
-              <li>Es gibt auch mehr...</li>
-            </ul>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Es gibt viele Klasse
+              * Dies sind nur die wichtigsten
+              * -> Components
+            </script>
           </aside>
         </section>
 
@@ -177,6 +180,15 @@
         <section>
           <h1>Das MVC</h1>
           <h1>Entwurfsmuster</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Jedem Bekannt
+              * 35j -> 1979 Smalltalk
+              * Viele Variationen:
+                * MVP, MVVM, MVW
+              * -> Beschreibung im Web-Kontext
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -200,18 +212,50 @@
 
         <section>
           <h1>MVC 1.0</h1>
+          <!--
           <h1 class="fragment" style="color: red; font-size: 300%;">&#9829;</h1>
+        -->
+          <h2>basiert auf</h2>
           <h1>Java EE 8</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Warum betont?
+              * Ziel: != Rat neu erfinden
+              * Nutzt Java EE Technologien
+              * -> Abhängigkeiten
+            </script>
+          </aside>
         </section>
 
         <section>
           <h2>MVC im Kontext</h2>
           <img src="images/dependencies.png" alt="img" height="400"/>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Servlet
+                * Grundlage für Web
+              * JAX-RS
+                * Routing
+                * Binding
+              * CDI
+                * Komponentenmodell
+              * Bean Validation
+                * Validierung
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>JAX-RS</h1>
           <h2 class="fragment">(in &lt; 3 Minuten)</h2>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * JAX-RS
+                * Wesentlicher Bestandteil
+              * Kurzeinführung
+              * -> in 3 Minuten
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -222,6 +266,14 @@
             <li class="fragment">Seit 1.1 Bestandteil von Java EE 6</li>
             <li class="fragment">JSR 2.1 -> JSR 370 -> Java EE 8</li>
           </ul>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Voller Name
+                * Wesentlicher Bestandteil
+              * Kurzeinführung
+              * -> in 3 Minuten
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -237,6 +289,13 @@ public class HelloResource {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * @Path Routing
+              * @GET HTTP Methods
+              * Return -> Body
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -253,12 +312,21 @@ public class HelloResource {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Path Parameter
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>Hello World</h1>
           <h2>mit</h2>
           <h1>MVC 1.0</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -275,6 +343,13 @@ public class HelloController {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * @Controller ändert Verhalten
+              * Rückgabe jetzt View Name
+              * -> Alternative für "return"
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -292,6 +367,13 @@ public class HelloController {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * @View Annotation
+              * Falls mehreren return points
+              * Auch auf Class Ebene erlaubt
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -308,10 +390,25 @@ public class HelloController {
   &lt;/body>
 &lt;/html>
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Kaum als JSP zu erkennen
+              * Standardpfad: /WEB-INF/views
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>Das Model</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Bisher fehlt: Model
+              * Daten -> View
+              * 2 Möglichkeiten
+                * MVC Models Klasse
+                * CDI Models
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -332,6 +429,13 @@ public class HelloController {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * @Inject Models
+              * Map ähnliche Datenstruktur
+              * -> Ausgabe in View
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -348,6 +452,15 @@ public class HelloController {
   &lt;/body>
 &lt;/html>
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Ausgabe via EL-expression
+              * Einfach und praktisch
+              * Probleme
+                * (-) In alle Controller einfügen
+              * -> Umgehen mit...
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -369,6 +482,14 @@ public class Greeting {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Annotations bekannt?
+                * Benanntes Bean
+                * Instanz pro Request
+              * -> @Inject in Controller
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -389,6 +510,13 @@ public class HelloController {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * @Inject nutzen
+              * Bedienen der API
+              * -> View
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -405,6 +533,18 @@ public class HelloController {
   &lt;/body>
 &lt;/html>
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Zugriff
+                * Bean Name
+                * Property
+                * Komplexe Pfade
+              * Vorteil:
+                * Kapseln von Präsentationsaufgaben
+                * Wiederverwendbarkeit
+              * -> Jetzt schon viel machbar...
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -426,6 +566,11 @@ models.put( "messages", Arrays.asList(
   &lt;/ul>
 &lt;/c:if>
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Rendering bereits flexibel möglich
+            </script>
+          </aside>
         </section>
 
         <section>
