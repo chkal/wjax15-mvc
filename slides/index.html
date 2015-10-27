@@ -549,7 +549,26 @@ public class HelloController {
               * Vorteil:
                 * Kapseln von Präsentationsaufgaben
                 * Wiederverwendbarkeit
-              * -> Jetzt schon viel machbar...
+              * -> Views...
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Views in MVC 1.0</h1>
+          <ul style="font-size: 160%;">
+            <li class="fragment">JavaServer Pages</li>
+            <li class="fragment">Facelets</li>
+          </ul>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Technologien
+                * JSP
+                  * 2000 / 15j
+                  * Last Update: 2013
+                * Facelets
+                  * Bekannt aus JSF
+              * -> JSP funktioniert gut...
             </script>
           </aside>
         </section>
@@ -576,12 +595,168 @@ models.put( "messages", Arrays.asList(
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Rendering bereits flexibel möglich
+              * DO:
+                * EL / Tag-Files
+              * DON'T
+                * Skriptlets / JSPX
+              * Pro:
+                * Tooling / Stabilität
+              * Contra:
+                * Moderen Features fehlen!?!
+                * -> ...
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h1>ViewEngine SPI</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Eigene View Technoligien
+              * Einfach zu bedienen
+              * Würde jetzt zu weit gehen..
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Ozark Extensions</h1>
+          <table style="font-size: 120%;">
+            <tr>
+              <td>
+                <ul>
+                  <li>Thymeleaf</li>
+                  <li>FreeMarker</li>
+                  <li>Velocity</li>
+                  <li>Handlebars</li>
+                  <li>Mustache</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>StringTemplate</li>
+                  <li>Jade</li>
+                  <li>AsciiDoc</li>
+                  <li>JSR223</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Entstanden bei SPI Erprobung
+              * Blick ins Git lohnt
+              * Nicht schwer
+              * Sneak Preview:
+                * React Isomorph JS
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h1><u>Beispiel:</u></h1>
+          <h1>Thymeleaf</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Wer kennt Thymeleaf?
+              * Interessante Konzepte
+              * Wie einbinden
+                * Dependency
+                * -> Controller
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Thymeleaf</h2>
+          <pre style="width: 100%; font-size: 0.6em;"><code class="java" data-trim>
+@Controller
+@Path("/thymeleaf")
+public class ThymeleafController {
+
+  @Inject
+  private Models models;
+
+  @GET
+  public String render() {
+
+    models.put( "messages", Arrays.asList(
+      "Text #1", "Text #2", "Text #3"
+    ) );
+
+    return "thymeleaf.html";
+
+  }
+
+}
+          </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * ...
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Thymeleaf</h2>
+          <h4 style="color: gray;"><tt>/WEB-INF/views/thymeleaf.html</tt></h4>
+          <table>
+            <tr>
+              <td>
+                <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
+<!-- ... -->
+
+&lt;table>
+  &lt;tr th:each="msg: ${messages}">
+    &lt;td th:text="${msg}">
+      Some text
+    &lt;/td>
+  &lt;/tr>
+&lt;/table>
+
+<!-- ... -->
+
+                </code></pre>
+              </td>
+              <td class="fragment">
+                <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
+&lt;table>
+  &lt;tr>
+    &lt;td>Text #1&lt;/td>
+  &lt;/tr>
+  &lt;tr>
+    &lt;td>Text #2&lt;/td>
+  &lt;/tr>
+  &lt;tr>
+    &lt;td>Text #3&lt;/td>
+  &lt;/tr>
+&lt;/table>
+                </code></pre>
+              </td>
+            </tr>
+          </table>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Attribute
+              * Preview auch ohne Server
+              * View mehr
+                * Templates (!= JSP)
+                * I18N
+                * URLs bauen
+              * Ein Beispiel für ViewEngines
+              * => Man hat die Wahl
             </script>
           </aside>
         </section>
 
         <section>
           <h1>Formulare</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Bisher: Nur Rendering
+              * Benutzereingaben
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -733,118 +908,6 @@ public String post( @BeanParam @Valid ValidationForm form ) {
 
 }
           </code></pre>
-        </section>
-
-        <section>
-          <h1>Views</h1>
-        </section>
-
-        <section>
-          <h1>MVC 1.0</h1>
-          <ul style="font-size: 180%;">
-            <li>JSP</li>
-            <li>Facelets</li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>ViewEngine SPI</h1>
-        </section>
-
-        <section>
-          <h1>Ozark Extensions</h1>
-          <table style="font-size: 120%;">
-            <tr>
-              <td>
-                <ul>
-                  <li>Thymeleaf</li>
-                  <li>FreeMarker</li>
-                  <li>Velocity</li>
-                  <li>Handlebars</li>
-                  <li>Mustache</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li>StringTemplate</li>
-                  <li>Jade</li>
-                  <li>AsciiDoc</li>
-                  <li>JSR223</li>
-                </ul>
-              </td>
-            </tr>
-          </table>
-        </section>
-
-        <section>
-          <h1><u>Beispiel:</u></h1>
-          <h1>Thymeleaf</h1>
-        </section>
-
-        <section>
-          <h2>Thymeleaf</h2>
-          <pre style="width: 100%; font-size: 0.6em;"><code class="java" data-trim>
-@Controller
-@Path("/thymeleaf")
-public class ThymeleafController {
-
-  @Inject
-  private Models models;
-
-  @GET
-  public String render() {
-
-    models.put( "messages", Arrays.asList(
-      "Text #1", "Text #2", "Text #3"
-    ) );
-
-    return "thymeleaf.html";
-
-  }
-
-}
-          </code></pre>
-        </section>
-
-        <section>
-          <h2>Thymeleaf</h2>
-          <h4 style="color: gray;"><tt>/WEB-INF/views/thymeleaf.html</tt></h4>
-          <table>
-            <tr>
-              <td>
-                <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
-<!-- ... -->
-
-&lt;table>
-  &lt;tr th:each="msg: ${messages}">
-    &lt;td th:text="${msg}">
-      Some text
-    &lt;/td>
-  &lt;/tr>
-&lt;/table>
-
-<!-- ... -->
-
-                </code></pre>
-              </td>
-              <td>
-                <pre style="width: 100%; font-size: 0.6em;"><code class="html" data-trim>
-&lt;table>
-  &lt;tr>
-    &lt;td>Text #1&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>Text #2&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>Text #3&lt;/td>
-  &lt;/tr>
-&lt;/table>
-                </code></pre>
-              </td>
-            </tr>
-          </table>
-
         </section>
 
         <section>
