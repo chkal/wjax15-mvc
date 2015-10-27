@@ -119,22 +119,8 @@
                 * "Warum 2 Frameworks?"
                 * "JSF ist auch MVC!"
               * Ed Burns Blog Post
-                * Zwei Ansätze
-                * Nicht JSF vs MVC
-                * -> Sondern..
-            </script>
-          </aside>
-        </section>
-
-        <section>
-          <h1>Component Oriented</h1>
-          <h1>vs.</h1>
-          <h1>Action Oriented</h1>
-          <aside class="notes" data-markdown>
-            <script type="text/template">
-              * Es gibt viele Klasse
-              * Dies sind nur die wichtigsten
-              * -> Components
+                * Zwei Klassen
+                * -> JSF = Component Oriented
             </script>
           </aside>
         </section>
@@ -146,7 +132,8 @@
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Wicket, GWT, Vaadin, ...
-              * M=CDI, V=Facelets, C=JSF
+              * Auch MVC:
+                * M=CDI, V=Facelets, C=JSF
               * Idee:
                 * Wiederverw. Komponenten
                 * JSF -> Details (Req/Resp)
@@ -154,7 +141,7 @@
                 * (+) Rapid Development
                 * (+) Versteckt tech Details
                 * (-) Weniger Kontrolle
-                * (-) Integration problematisch
+                * (-) Integration JS/CSS/etc
             </script>
           </aside>
         </section>
@@ -165,7 +152,7 @@
           <h1>Action Oriented</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Struts, Spring MVC, Grails, Spark, Rails/Express...
+              * Spring MVC, Struts, Grails, Spark, Rails/Express...
               * Idee:
                 * Request/Response im Fokus
               * Pro/Con
@@ -173,6 +160,19 @@
                   * (HTTP / HTML/CSS)
                 * Weniger Komfort
                   * Beispiel JSF Resources
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Component Oriented</h1>
+          <h1>vs.</h1>
+          <h1>Action Oriented</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Verschiedene Ansätze
+              * Kein Richtig/Falsch
+              * Dies sind nur die wichtigsten
             </script>
           </aside>
         </section>
@@ -347,7 +347,31 @@ public class HelloController {
             <script type="text/template">
               * @Controller ändert Verhalten
               * Rückgabe jetzt View Name
-              * -> Alternative für "return"
+              * -> View
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h2>View</h2>
+          <h4 style="color: gray;"><tt>/WEB-INF/views/helloworld.jsp</tt></h4>
+          <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;title>MVC Demo&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Hello world&lt;/h1>
+  &lt;/body>
+&lt;/html>
+          </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Kaum als JSP zu erkennen
+              * Standardpfad: /WEB-INF/views
+              * Hier statisch
+              * -> View via return, oder...
             </script>
           </aside>
         </section>
@@ -372,34 +396,17 @@ public class HelloController {
               * @View Annotation
               * Falls mehreren return points
               * Auch auf Class Ebene erlaubt
+              * -> Keine Variablen Anteile
             </script>
           </aside>
         </section>
 
         <section>
-          <h2>View</h2>
-          <h4 style="color: gray;"><tt>/WEB-INF/views/helloworld.jsp</tt></h4>
-          <pre style="width: 100%; font-size: 0.8em;"><code class="html" data-trim>
-&lt;!DOCTYPE html>
-&lt;html>
-  &lt;head>
-    &lt;title>MVC Demo&lt;/title>
-  &lt;/head>
-  &lt;body>
-    &lt;h1>Hello world&lt;/h1>
-  &lt;/body>
-&lt;/html>
-          </code></pre>
-          <aside class="notes" data-markdown>
-            <script type="text/template">
-              * Kaum als JSP zu erkennen
-              * Standardpfad: /WEB-INF/views
-            </script>
-          </aside>
-        </section>
-
-        <section>
-          <h1>Das Model</h1>
+          <h1>Das Modell</h1>
+          <ul style="font-size: 140%;">
+            <li class="fragment"><tt>javax.mvc.Models</tt></li>
+            <li class="fragment">Basierend auf CDI</li>
+          </ul>
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Bisher fehlt: Model
