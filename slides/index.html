@@ -1037,7 +1037,7 @@ public String post( @BeanParam @Valid ValidationForm form ) {
           <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
 &lt;form id="form" style="display: none;" method="POST"
       action="https://www.example.com/tweet">
-  &lt;input type="hidden" name="status"
+  &lt;input type="text" name="status"
          value="PHP ist die beste Sprache der Welt!"/>
 &lt;/form>
 
@@ -1049,7 +1049,6 @@ public String post( @BeanParam @Valid ValidationForm form ) {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Verstecktes Form
-              * Input hidden
               * Submit via JavaScript
             </script>
           </aside>
@@ -1064,7 +1063,12 @@ public String post( @BeanParam @Valid ValidationForm form ) {
           </ul>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Verhindern wie folgt
+              * Verhindern wie folgt:
+                * Zufallszahl
+                * Ins Form
+                * Validierung bei Submit
+              * MVC Support
+              * -> Modes
             </script>
           </aside>
         </section>
@@ -1097,6 +1101,13 @@ public String post( @BeanParam @Valid ValidationForm form ) {
               </td>
             </tr>
           </table>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Modes erklären
+              * Wie nutzen?
+                * Einbau in Form
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -1104,6 +1115,7 @@ public String post( @BeanParam @Valid ValidationForm form ) {
           <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
 &lt;form action="${mvc.basePath}/tweet" method="POST">
 
+  &lt;!-- CSRF Page Token -->
   &lt;input type="hidden" name="${mvc.csrf.name}"
       value="${mvc.csrf.token}"/>
 
@@ -1114,6 +1126,14 @@ public String post( @BeanParam @Valid ValidationForm form ) {
 
 &lt;/form>
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Input Hidden
+              * Bei EXPLICIT / IMPLICIT
+              * Zugriff über "mvc"
+              * -> Controller
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -1135,6 +1155,14 @@ public class TweetController {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Controller wie immer
+              * Bei EXPLICIT via @CsrfValid
+              * Bei IMPLICIT automatisch
+              * Fehler = 403 Forbidden
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -1159,6 +1187,13 @@ public class TweetController {
           <a href="https://github.com/chkal/todo-mvc/" style="font-size: 160%;">
             https://github.com/chkal/todo-mvc/
           </a>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Kleine Applikation
+              * Zeigt alle Konzepte / APIs
+              * -> TODOs
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -1168,6 +1203,14 @@ public class TweetController {
             <li class="fragment">Typsicheres Erstellen von URLs</li>
             <li class="fragment">...</li>
           </ul>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * I18N
+                * Zahlenformat / Dateformat
+              * URLs
+                * Bisher nur manuell / JAX-RS
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -1218,6 +1261,9 @@ public class TweetController {
           <div class="mono" style="margin-top: 10%;">
             <a href="https://github.com/chkal/wjax15-mvc">
               https://github.com/chkal/wjax15-mvc
+            </a>
+            <a href="https://github.com/chkal/todo-mvc">
+              https://github.com/chkal/todo-mvc
             </a>
           </div>
           <div style="margin-top: 5%;">
