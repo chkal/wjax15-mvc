@@ -612,7 +612,7 @@ models.put( "messages", Arrays.asList(
           <h1>ViewEngine SPI</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Eigene View Technoligien
+              * Eigene Template Engines
               * Einfach zu bedienen
               * Würde jetzt zu weit gehen..
             </script>
@@ -738,11 +738,12 @@ public class ThymeleafController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Attribute
+              * ->
               * Preview auch ohne Server
               * View mehr
-                * Templates (!= JSP)
-                * I18N
-                * URLs bauen
+                * Templating (!= JSP)
+                * I18N (#)
+                * URLs bauen (@)
               * Ein Beispiel für ViewEngines
               * => Man hat die Wahl
             </script>
@@ -754,7 +755,7 @@ public class ThymeleafController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Bisher: Nur Rendering
-              * Benutzereingaben
+              * Benutzereingaben wesentlich
             </script>
           </aside>
         </section>
@@ -772,6 +773,13 @@ public class ThymeleafController {
 
 &lt;/form>
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Standard HTML Form
+              * Nichts besonders
+              * mvc EL - Utils
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -794,6 +802,16 @@ public class FormController {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Standard, außer:
+                * @POST
+                * @FormParam
+              * Sehr einfach, oder?
+              * vs. große Forms
+              * => Alternative
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -814,6 +832,14 @@ public class HelloForm {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Eine Klasse
+              * @Form an Feldern
+              * Skaliert besser
+              * => Was macht man damit?
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -836,15 +862,37 @@ public class FormController {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Unterschied:
+                * @BeanParam
+              * Dann Getter
+              * Also: Forms einfach!
+              * => Validierung
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>Validation</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Nichts neu erfinden
+              * Nutzung von Java EE Standard
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>JSR 303</h1>
           <h1>Bean Validation</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Frage: Bean Validation bekannt?
+              * Funktioniert über Annotations
+              * => Beispiel
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -865,6 +913,15 @@ public class HelloForm {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Deklarativ
+              * Verschiedene Constraints möglich
+              * Meldungen konfigurierbar
+              * I18N unterstützt!!!
+              * => Controller
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -887,6 +944,16 @@ public class FormController {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Neu:
+                * @Inject BindingResult
+                * @Valid an Parameter
+              * Ohne BindingResult
+                * JAX-RS -> 400 Bad Request
+              * => Zoom in Methode
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -908,21 +975,46 @@ public String post( @BeanParam @Valid ValidationForm form ) {
 
 }
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Vorgegehn:
+                * Fehlgeschlagen?
+                * Ja -> Messages -> Rendern
+              * Warum Binding Result?
+                * Nicht nur Validierung
+                * Auch Binding Errors
+              * Viele andere Methoden
+                * Messages für Parameter
+                * Details: ConstraintViolation
+              * -> Security
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>Security</h1>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Support eingebaut
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>CSRF</h1>
           <h2>Cross Site Request Forgery</h2>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Frage: Bekannt?
+            </script>
+          </aside>
         </section>
 
         <section>
           <h2>CSRF Beispiel</h2>
+          <h4 style="color: gray;"><tt>https://www.example.com/tweet</tt></h4>
           <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
-&lt;form action="/myapp/tweet" method="POST">
+&lt;form action="/tweet" method="POST">
 
   Bitte geben Sie einen Text ein:
   &lt;input type="text" name="status"/>
@@ -931,13 +1023,20 @@ public String post( @BeanParam @Valid ValidationForm form ) {
 
 &lt;/form>
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Einfaches Form
+              * Twitter Beispiel
+            </script>
+          </aside>
         </section>
 
         <section>
           <h2>CSRF Beispiel</h2>
+          <h4 style="color: gray;"><tt>http://www.bad-guys.com/</tt></h4>
           <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
 &lt;form id="form" style="display: none;" method="POST"
-      action="http://www.example.com/myapp/tweet">
+      action="https://www.example.com/tweet">
   &lt;input type="hidden" name="status"
          value="PHP ist die beste Sprache der Welt!"/>
 &lt;/form>
@@ -947,6 +1046,13 @@ public String post( @BeanParam @Valid ValidationForm form ) {
   Gratis iPhone
 &lt;/a>
           </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Verstecktes Form
+              * Input hidden
+              * Submit via JavaScript
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -956,11 +1062,15 @@ public String post( @BeanParam @Valid ValidationForm form ) {
             <li class="fragment">Token wird in Hidden-Field gerendert</li>
             <li class="fragment">Prüfung des Token bei Submit</li>
           </ul>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Verhindern wie folgt
+            </script>
+          </aside>
         </section>
 
         <section>
           <h1>MVC 1.0 CSRF Modes</h1>
-
           <table>
             <tr class="fragment">
               <td>
