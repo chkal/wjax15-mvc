@@ -1,3 +1,12 @@
+/*
+body {
+  background: #333333;
+}
+body {
+  background: #666666;
+}
+*/
+
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
@@ -64,5 +73,5 @@
 }
 
 .reveal table td {
-  vertical-align: top; 
+  vertical-align: top;
 }
