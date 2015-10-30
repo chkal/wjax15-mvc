@@ -56,6 +56,11 @@ body {
   overflow: hidden;
 }
 
+.reveal h4.filename {
+  font-family: 'Droid Sans Mono', monospace;
+  color: grey;
+}
+
 .reveal section img {
   background-color: transparent;
   border: 0;
