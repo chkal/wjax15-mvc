@@ -1,0 +1,29 @@
+body {
+  background: #DADADA;
+}
+
+.reveal {
+  color: black;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: black;
+}
+
+.reveal a {
+  color: #2a76dd;
+}
+
+.reveal a:hover {
+  color: #6ca0e8;
+}
+
+.reveal img.invertible {
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
