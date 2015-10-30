@@ -76,9 +76,9 @@
           <h1>MVC 1.0?</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Neues Web-Framework für Java EE 8
-              * Aber warum?
-              * Java EE hat doch JSF
+              * Neues in Java EE 8
+              * Warum?
+              * JSF!
               * -
               * Anfang 2014:
                 * Java EE 8 Community Survey
@@ -115,8 +115,8 @@
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Meinungen
-                * "Es gibt doch schon JSF"
-                * "Warum 2 Frameworks?"
+                * "Und JSF?"
+                * "Warum 2?"
                 * "JSF ist auch MVC!"
               * Ed Burns Blog Post
                 * Zwei Klassen
@@ -132,16 +132,15 @@
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Wicket, GWT, Vaadin, ...
-              * Auch MVC:
-                * M=CDI, V=Facelets, C=JSF
               * Idee:
                 * Wiederverw. Komponenten
-                * JSF -> Details (Req/Resp)
+                * JSF -> Details (Req/Resp, Rend)
+                * Bsp: Paging Table
               * Pro/Con
                 * (+) Rapid Development
                 * (+) Versteckt tech Details
                 * (-) Weniger Kontrolle
-                * (-) Integration JS/CSS/etc
+                * (-) Integration JS / CSS
             </script>
           </aside>
         </section>
@@ -208,6 +207,12 @@
         </section>
         <section>
           <img src="images/mvc.png" alt="img" height="600"/>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Einfaces Modell
+              * vs. JSF Lifecycle
+            </script>
+          </aside>
         </section>
 
         <section>
@@ -252,8 +257,8 @@
             <script type="text/template">
               * JAX-RS
                 * Wesentlicher Bestandteil
-              * Kurzeinführung
-              * -> in 3 Minuten
+              * Frage: JAX-RS Erfahrung
+              * -> Kurzeinführung in 3 Minuten
             </script>
           </aside>
         </section>
@@ -268,10 +273,7 @@
           </ul>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Voller Name
-                * Wesentlicher Bestandteil
-              * Kurzeinführung
-              * -> in 3 Minuten
+              * -> Einführung mit Code!
             </script>
           </aside>
         </section>
@@ -315,6 +317,8 @@ public class HelloResource {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Path Parameter
+              * Auch Form, Query, etc
+              * Fokus: APIs
             </script>
           </aside>
         </section>
@@ -325,6 +329,7 @@ public class HelloResource {
           <h1>MVC 1.0</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
+              * Klassisches Beispiel
             </script>
           </aside>
         </section>
@@ -345,8 +350,10 @@ public class HelloController {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * @Controller ändert Verhalten
-              * Rückgabe jetzt View Name
+              * Ähnlich zu JAX-RS
+              * Änderungen:
+                * @Controller ändert Verhalten
+                * Rückgabe jetzt View Name
               * -> View
             </script>
           </aside>
@@ -439,7 +446,7 @@ public class HelloController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * @Inject Models
-              * Map ähnliche Datenstruktur
+              * Ähnlich zu Map
               * -> Ausgabe in View
             </script>
           </aside>
@@ -477,14 +484,14 @@ public class HelloController {
 @RequestScoped
 public class Greeting {
 
-  private String text;
+  private String message;
 
-  public String getText() {
-    return text;
+  public String getMessage() {
+    return message;
   }
 
-  public void setText( String text ) {
-    this.text = text;
+  public void setMessage( String message ) {
+    this.message = message;
   }
 
 }
@@ -511,7 +518,7 @@ public class HelloController {
 
   @GET
   public String greet() {
-    greeting.setText( "Hello world!" );
+    greeting.setMessage( "Hello world!" );
     return "helloworld.jsp";
   }
 
@@ -536,7 +543,7 @@ public class HelloController {
     &lt;title>MVC Demo&lt;/title>
   &lt;/head>
   &lt;body>
-    &lt;h1>${greeting.text}&lt;/h1>
+    &lt;h1>${greeting.message}&lt;/h1>
   &lt;/body>
 &lt;/html>
           </code></pre>
