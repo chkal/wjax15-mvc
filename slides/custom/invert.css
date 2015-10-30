@@ -23,6 +23,10 @@ body {
   color: #6ca0e8;
 }
 
+.reveal h4.filename {
+  color: #4D4D4D;
+}
+
 .reveal img.invertible {
   -webkit-filter: invert(1);
   filter: invert(1);
