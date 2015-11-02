@@ -66,9 +66,10 @@
           </p>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * ingenit Dortmund
-              * Webbasierte Unternehmensanwendungen
-              * Meist hinter der Firewall
+              * ingenit
+                * Dortmund
+                * Webbasierte Unternehmensanw.
+                * Hinter Firewall
               * Open Source
               * JSR 371 EG
             </script>
@@ -80,14 +81,13 @@
           <h1>MVC 1.0?</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Neues in Java EE 8
+              * Neu in Java EE 8
               * Warum?
               * JSF!
               * -
-              * Anfang 2014:
-                * Java EE 8 Community Survey
-                * 4.500 Teilnehmer
-              * "MVC Webframework?"
+              * Anfang 2014
+              * Java EE 8 - Community Survey
+              * ->
             </script>
           </aside>
         </section>
@@ -122,7 +122,7 @@
                 * "Und JSF?"
                 * "Warum 2?"
                 * "JSF ist auch MVC!"
-              * Ed Burns Blog Post
+              * Ed Burns Blog
                 * Zwei Klassen
                 * -> JSF = Component Oriented
             </script>
@@ -158,11 +158,12 @@
               * Spring MVC, Struts, Grails, Spark, Rails/Express...
               * Idee:
                 * Request/Response im Fokus
+                * Leichtgew. / wenig Abstrk.
               * Pro/Con
                 * Volle Kontrolle
-                  * (HTTP / HTML/CSS)
                 * Weniger Komfort
                   * Beispiel JSF Resources
+              * -> Zwei Ansätze
             </script>
           </aside>
         </section>
@@ -175,7 +176,8 @@
             <script type="text/template">
               * Verschiedene Ansätze
               * Kein Richtig/Falsch
-              * Dies sind nur die wichtigsten
+              * Versch. Anford.
+              * Gibt mehr
             </script>
           </aside>
         </section>
@@ -185,7 +187,8 @@
           <h1>Entwurfsmuster</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Jedem Bekannt
+              * Jedem Bekannt?
+                * **Frage**
               * 35j -> 1979 Smalltalk
               * Viele Variationen:
                 * MVP, MVVM, MVW
@@ -229,7 +232,7 @@
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Warum betont?
-              * Ziel: != Rat neu erfinden
+              * Kein Rad neu erfinden
               * Nutzt Java EE Technologien
               * -> Abhängigkeiten
             </script>
@@ -261,7 +264,7 @@
             <script type="text/template">
               * JAX-RS
                 * Wesentlicher Bestandteil
-              * Frage: JAX-RS Erfahrung
+              * **Frage:** JAX-RS Erfahrung
               * -> Kurzeinführung in 3 Minuten
             </script>
           </aside>
@@ -273,7 +276,7 @@
             <li class="fragment">"Java API for RESTful Web Services"</li>
             <li class="fragment">Erstes Release 2008</li>
             <li class="fragment">Seit 1.1 Bestandteil von Java EE 6</li>
-            <li class="fragment">JSR 2.1 -> JSR 370 -> Java EE 8</li>
+            <li class="fragment">JAX-RS 2.1 -> JSR 370 -> Java EE 8</li>
           </ul>
           <aside class="notes" data-markdown>
             <script type="text/template">
@@ -320,8 +323,10 @@ public class HelloResource {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Path Parameter
-              * Auch Form, Query, etc
+              * Auch:
+                * Form
+                * Query
+                * Header, etc
               * Fokus: APIs
             </script>
           </aside>
@@ -356,8 +361,8 @@ public class HelloController {
             <script type="text/template">
               * Ähnlich zu JAX-RS
               * Änderungen:
-                * @Controller ändert Verhalten
-                * Rückgabe jetzt View Name
+                * **@Controller** ändert Verhalten
+                * **Rückgabe** jetzt View Name
               * -> View
             </script>
           </aside>
@@ -380,7 +385,7 @@ public class HelloController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Kaum als JSP zu erkennen
-              * Standardpfad: /WEB-INF/views
+              * **Standardpfad:** /WEB-INF/views
               * Hier statisch
               * -> View via return, oder...
             </script>
@@ -405,8 +410,9 @@ public class HelloController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * @View Annotation
+              * **Komplexe** Controller
               * Falls mehreren return points
-              * Auch auf Class Ebene erlaubt
+              * Auch auf **Klasse**
               * -> Keine Variablen Anteile
             </script>
           </aside>
@@ -421,10 +427,10 @@ public class HelloController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Bisher fehlt: Model
-              * Daten -> View
+              * **Daten -> View**
               * 2 Möglichkeiten
-                * MVC Models Klasse
-                * CDI Models
+                * MVC **Models** Klasse
+                * **CDI** Models
             </script>
           </aside>
         </section>
@@ -450,7 +456,7 @@ public class HelloController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * @Inject Models
-              * Ähnlich zu Map
+              * Wie **Map**
               * -> Ausgabe in View
             </script>
           </aside>
@@ -472,8 +478,8 @@ public class HelloController {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Ausgabe via EL-expression
-              * Einfach und praktisch
+              * **Einfach/praktisch**
+              * Daten **für View**
               * Probleme
                 * (-) In alle Controller einfügen
               * -> Umgehen mit...
@@ -502,7 +508,7 @@ public class Greeting {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Annotations bekannt?
+              * **Frage:** Annotations bekannt?
                 * Benanntes Bean
                 * Instanz pro Request
               * -> @Inject in Controller
@@ -554,12 +560,11 @@ public class HelloController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Zugriff
-                * Bean Name
-                * Property
+                * Bean / Property
                 * Komplexe Pfade
               * Vorteil:
-                * Kapseln von Präsentationsaufgaben
-                * Wiederverwendbarkeit
+                * **Kapselung** von Präs. Aufgaben
+                * **Wiederverwendbarkeit**
               * -> Views...
             </script>
           </aside>
@@ -574,10 +579,10 @@ public class HelloController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Technologien
-                * JSP
+                * **JSP**
                   * 2000 / 15j
                   * Last Update: 2013
-                * Facelets
+                * **Facelets**
                   * Bekannt aus JSF
               * -> JSP funktioniert gut...
             </script>
@@ -605,15 +610,15 @@ models.put( "messages", Arrays.asList(
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Rendering bereits flexibel möglich
+              * Rendering **flexibel**
               * DO:
-                * EL / Tag-Files
+                * **EL / Tag-Files**
               * DON'T
-                * Skriptlets / JSPX
+                * Skriptlets
               * Pro:
-                * Tooling / Stabilität
+                * Tooling / **Stabilität**
               * Contra:
-                * Moderen Features fehlen!?!
+                * **Moderen Features** fehlen!?!
                 * -> ...
             </script>
           </aside>
@@ -656,11 +661,9 @@ models.put( "messages", Arrays.asList(
           </table>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Entstanden bei SPI Erprobung
-              * Blick ins Git lohnt
-              * Nicht schwer
-              * Sneak Preview:
-                * React Isomorph JS
+              * Meist **RI**
+              * **3rd Party**
+              * Reinschauen!
             </script>
           </aside>
         </section>
@@ -670,11 +673,11 @@ models.put( "messages", Arrays.asList(
           <h1>Thymeleaf</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Wer kennt Thymeleaf?
+              * **Frage:** Wer kennt Thymeleaf?
               * Interessante Konzepte
               * Wie einbinden
-                * Dependency
-                * -> Controller
+                * **Dependency**
+                * -> **Controller**
             </script>
           </aside>
         </section>
@@ -704,7 +707,7 @@ public class ThymeleafController {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * ...
+              * "html" Extension
             </script>
           </aside>
         </section>
@@ -749,14 +752,15 @@ public class ThymeleafController {
           </table>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Attribute
+              * Template **Attribute**
               * ->
-              * Preview auch ohne Server
+              * (+) Preview im Browser
+              * (+) Templates von Designern
               * View mehr
                 * Templating (!= JSP)
                 * I18N (#)
                 * URLs bauen (@)
-              * Ein Beispiel für ViewEngines
+              * Ein **Beispiel** für ViewEngines
               * => Man hat die Wahl
             </script>
           </aside>
@@ -766,8 +770,9 @@ public class ThymeleafController {
           <h1>Formulare</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Bisher: Nur Rendering
-              * Benutzereingaben wesentlich
+              * Bisher: **Nur Rendering**
+              * **Benutzereingaben**
+              * **wesentlicher Bestandteil**
             </script>
           </aside>
         </section>
@@ -789,6 +794,7 @@ public class ThymeleafController {
             <script type="text/template">
               * Standard HTML Form
               * Nichts besonders
+              * Beliebig **JS Libs** einbinden
               * -> Abs. Path
             </script>
           </aside>
@@ -837,10 +843,10 @@ public class FormController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Standard, außer:
-                * @POST
-                * @FormParam
+                * **@POST**
+                * **@FormParam**
               * Sehr einfach, oder?
-              * vs. große Forms
+              * vs. **große Forms**
               * => Alternative
             </script>
           </aside>
@@ -866,10 +872,10 @@ public class HelloForm {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Eine Klasse
-              * @Form an Feldern
-              * Skaliert besser
-              * => Was macht man damit?
+              * Eine **Klasse**
+              * @Form an **Feldern**
+              * **Skaliert** besser
+              * => Controller
             </script>
           </aside>
         </section>
@@ -897,10 +903,10 @@ public class FormController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Unterschied:
-                * @BeanParam
-              * Dann Getter
+                * **@BeanParam**
+              * Dann **Getter**
               * Also: Forms einfach!
-              * => Validierung
+              * => **Validierung**
             </script>
           </aside>
         </section>
@@ -920,8 +926,8 @@ public class FormController {
           <h1>Bean Validation</h1>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Frage: Bean Validation bekannt?
-              * Funktioniert über Annotations
+              * **Frage:** Bekannt?
+              * **Deklarativ** Annotations
               * => Beispiel
             </script>
           </aside>
@@ -947,10 +953,10 @@ public class HelloForm {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Deklarativ
-              * Verschiedene Constraints möglich
-              * Meldungen konfigurierbar
-              * I18N unterstützt!!!
+              * Constraints
+                * Versch. Datentypen
+                * Meldungen
+                * I18N
               * => Controller
             </script>
           </aside>
@@ -983,15 +989,14 @@ public class FormController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Neu:
-                * @Inject BindingResult
-                * @Valid an Parameter
-              * Ohne BindingResult
-                * JAX-RS -> 400 Bad Request
-              * Binding Result?
-                * Auch Binding Errors
-              * Viele andere Methoden
+                * @Inject **BindingResult**
+                * **@Valid** an Parameter
+              * Ohne: 400 Bad Req
+              * Viele Methoden
                 * Messages für Parameter
                 * Details: ConstraintViolation
+              * **Max Flexibilität**
+              * Aber -> **Handarbeit**
               * -> Security
             </script>
           </aside>
@@ -1011,7 +1016,12 @@ public class FormController {
           <h2>Cross Site Request Forgery</h2>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Frage: Bekannt?
+              * **Frage:** Bekannt?
+              * Details:
+                * Nutzer **angemeldet**
+                * Angreifer -> **Request an App**
+                * Klappt, weil
+                  * Session Cookie
             </script>
           </aside>
         </section>
@@ -1031,8 +1041,9 @@ public class FormController {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Einfaches Form
               * Twitter Beispiel
+              * Reines Form
+              * -> Angreifer
             </script>
           </aside>
         </section>
@@ -1055,8 +1066,13 @@ public class FormController {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Verstecktes Form
-              * Submit via JavaScript
+              * Seite **preparieren**
+              * Step 1:
+                * **Form** versteckt
+                * **Post** auf App
+              * Step 2:
+                * **Submit** via JavaScript
+              * Bsp: Tomcat Manager App
             </script>
           </aside>
         </section>
@@ -1070,11 +1086,8 @@ public class FormController {
           </ul>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Verhindern wie folgt:
-                * Zufallszahl
-                * Ins Form
-                * Validierung bei Submit
-              * MVC Support
+              * ...
+              * **Out-of-the-box Support**
               * -> Modes
             </script>
           </aside>
@@ -1110,9 +1123,10 @@ public class FormController {
           </table>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Modes erklären
+              * ...
               * Wie nutzen?
-                * Einbau in Form
+                * JAX-RS App Klasse
+                * **Einbau in Form**
             </script>
           </aside>
         </section>
@@ -1136,9 +1150,9 @@ public class FormController {
           <aside class="notes" data-markdown>
             <script type="text/template">
               * Input Hidden
-              * Bei EXPLICIT / IMPLICIT
-              * Zugriff über "mvc"
-              * -> Controller
+              * Bei **EXPLICIT/IMPLICIT**
+              * Zugriff **über "mvc"**
+              * -> **Controller**
             </script>
           </aside>
         </section>
@@ -1164,9 +1178,8 @@ public class TweetController {
           </code></pre>
           <aside class="notes" data-markdown>
             <script type="text/template">
-              * Controller wie immer
-              * Bei EXPLICIT via @CsrfValid
-              * Bei IMPLICIT automatisch
+              * Bei **EXPLICIT** via **@CsrfValid**
+              * Bei **IMPLICIT** automatisch
               * Fehler = 403 Forbidden
             </script>
           </aside>
@@ -1175,6 +1188,12 @@ public class TweetController {
         <section>
           <h1>Empfehlung</h1>
           <h2 class="fragment">IMPLICIT verwenden!</h2>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
+              * Lieber bei Entwicklung Fehler
+              * als Sicherheitslücken
+            </script>
+          </aside>
         </section>
 
         <section>
