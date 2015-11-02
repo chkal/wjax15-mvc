@@ -1040,13 +1040,14 @@ public class FormController {
         <section>
           <h2>CSRF Beispiel</h2>
           <h4 class="filename">http://www.bad-guys.com/</h4>
-          <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
+          <pre style="width: 100%; font-size: 0.7em;" class="fragment"><code class="html" data-trim>
 &lt;form id="form" style="display: none;" method="POST"
       action="https://www.example.com/tweet">
   &lt;input type="text" name="status"
          value="PHP ist die beste Sprache der Welt!"/>
 &lt;/form>
-
+          </code></pre>
+          <pre style="width: 100%; font-size: 0.7em;" class="fragment"><code class="html" data-trim>
 &lt;a href="javascript:void(0)"
    onclick="document.getElementById('form').submit();">
   Gratis iPhone
@@ -1119,7 +1120,7 @@ public class FormController {
         <section>
           <h2>CSRF Beispiel</h2>
           <pre style="width: 100%; font-size: 0.7em;"><code class="html" data-trim>
-&lt;form action="${mvc.basePath}/tweet" method="POST">
+&lt;form action="/tweet" method="POST">
 
   &lt;!-- CSRF Page Token -->
   &lt;input type="hidden" name="${mvc.csrf.name}"
