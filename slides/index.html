@@ -776,7 +776,7 @@ public class ThymeleafController {
           <h2>Einfache Forms</h2>
           <h4 class="filename">/WEB-INF/views/form.jsp</h4>
           <pre style="width: 100%; font-size: 0.75em;"><code class="html" data-trim>
-&lt;form action="${mvc.basePath}/form" method="POST">
+&lt;form action="/mvc-demo/form" method="POST">
 
   Bitte geben Sie Ihren Namen ein:
   &lt;input type="text" name="name"/>
@@ -789,6 +789,26 @@ public class ThymeleafController {
             <script type="text/template">
               * Standard HTML Form
               * Nichts besonders
+              * -> Abs. Path
+            </script>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Einfache Forms</h2>
+          <h4 class="filename">/WEB-INF/views/form.jsp</h4>
+          <pre style="width: 100%; font-size: 0.75em;"><code class="html" data-trim>
+&lt;form action="${mvc.basePath}/form" method="POST">
+
+  Bitte geben Sie Ihren Namen ein:
+  &lt;input type="text" name="name"/>
+
+  &lt;input type="submit" value="Absenden"/>
+
+&lt;/form>
+          </code></pre>
+          <aside class="notes" data-markdown>
+            <script type="text/template">
               * mvc EL - Utils
             </script>
           </aside>
@@ -936,22 +956,26 @@ public class HelloForm {
           </aside>
         </section>
 
+
         <section>
           <h2>Validierung</h2>
-          <pre style="width: 100%; font-size: 0.65em;"><code class="java" data-trim>
+          <pre style="width: 100%; font-size: 0.60em;"><code class="java" data-trim>
 @Controller
 @Path("/form")
 public class FormController {
-
-  @Inject
-  private Models models;
 
   @Inject
   private BindingResult bindingResult;
 
   @POST
   public String post( @BeanParam @Valid ValidationForm form ) {
-    // ... gleich mehr ...
+
+    if( bindingResult.isFailed() ) {
+      models.put( "messages", bindingResult.getAllMessages() );
+      return "form.jsp";
+    }
+
+    // Verarbeitung des Forms...
   }
 
 }
@@ -963,37 +987,7 @@ public class FormController {
                 * @Valid an Parameter
               * Ohne BindingResult
                 * JAX-RS -> 400 Bad Request
-              * => Zoom in Methode
-            </script>
-          </aside>
-        </section>
-
-        <section>
-          <h2>Validierung</h2>
-          <pre style="width: 100%; font-size: 0.65em;"><code class="java" data-trim>
-@POST
-public String post( @BeanParam @Valid ValidationForm form ) {
-
-  if( bindingResult.isFailed() ) {
-    models.put( "messages", bindingResult.getAllMessages() );
-    return "form.jsp";
-  }
-
-  // Verarbeitung des Forms...
-
-  models.put( "messages",
-    Arrays.asList( "Validierung erfolgreich." ) );
-  return "form.jsp";
-
-}
-          </code></pre>
-          <aside class="notes" data-markdown>
-            <script type="text/template">
-              * Vorgegehn:
-                * Fehlgeschlagen?
-                * Ja -> Messages -> Rendern
-              * Warum Binding Result?
-                * Nicht nur Validierung
+              * Binding Result?
                 * Auch Binding Errors
               * Viele andere Methoden
                 * Messages für Parameter
