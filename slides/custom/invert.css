@@ -1,5 +1,5 @@
 body {
-  background: #DADADA;
+  background: #E6E6E6;
 }
 
 .reveal {
@@ -16,7 +16,7 @@ body {
 }
 
 .reveal a {
-  color: #2a76dd;
+  color: #1D4D90;
 }
 
 .reveal a:hover {
@@ -28,6 +28,6 @@ body {
 }
 
 .reveal img.invertible {
-  -webkit-filter: invert(1);
-  filter: invert(1);
+  -webkit-filter: invert(0.9);
+  filter: invert(0.9);
 }
