@@ -287,7 +287,7 @@
 
         <section>
           <h2>JAX-RS Beispiel</h2>
-          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+          <pre style="width: 100%; font-size: 0.65em;"><code class="java" data-trim>
 @Path("/hello")
 public class HelloResource {
 
@@ -309,13 +309,12 @@ public class HelloResource {
 
         <section>
           <h2>JAX-RS Beispiel</h2>
-          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+          <pre style="width: 100%; font-size: 0.65em;"><code class="java" data-trim>
 @Path("/hello")
 public class HelloResource {
 
   @GET
-  @Path("/{name}")
-  public String greet( @PathParam("name") String name ) {
+  public String greet( @QueryParam("name") String name ) {
     return "Hello " + name;
   }
 
