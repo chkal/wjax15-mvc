@@ -976,7 +976,7 @@ public class FormController {
   private BindingResult bindingResult;
 
   @POST
-  public String post( @BeanParam @Valid ValidationForm form ) {
+  public String post( @BeanParam @Valid HelloForm form ) {
 
     if( bindingResult.isFailed() ) {
       models.put( "messages", bindingResult.getAllMessages() );
